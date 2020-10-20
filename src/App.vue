@@ -1,11 +1,13 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <div id="nav" v-if="$route.meta.keep">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>|
-      <router-link to="/blog">Blog</router-link>
+      <router-link to="/blog">Blog</router-link>|
+      <router-link to="/lang">Lang</router-link>
     </div>
-    <router-view />
+    <!-- <router-view /> -->
+    <router-view v-if="$route.meta.keep"></router-view>
   </div>
 </template>
 
