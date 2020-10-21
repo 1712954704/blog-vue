@@ -1,14 +1,44 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import One from "../views/One.vue";
+import Two from "../views/Two.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    name: "Home",
+    redirect: '/home',
+    // name: "Home",
+    // component: Home,
+    meta: {
+      nav: true,
+      keep: true
+    }
+  },
+  {
+    path: '/home', // 主页路由
+    name: 'Home',
     component: Home,
+    children:[ // 嵌套子路由
+        {
+          path:'one', // 子页面1
+          component:One,
+          meta: {
+            nav: true,
+            keep: true
+          }
+        },
+        {
+          path:'two', // 子页面2
+          component:Two,
+          meta: {
+            nav: true,
+            keep: true
+          }
+        },
+    ],
     meta: {
       nav: true,
       keep: true
@@ -17,6 +47,7 @@ const routes = [
   {
     path: "/about",
     name: "About",
+    // component: About,
     meta: {
       nav: true,
       keep: true
