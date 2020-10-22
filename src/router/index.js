@@ -90,4 +90,8 @@ const router = new VueRouter({
   routes
 });
 
+// router.beforeEach(async(to, from, next) => {
+//   /* 必须调用 `next` */
+// })
+
 export default router;
