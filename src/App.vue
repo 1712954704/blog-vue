@@ -1,15 +1,32 @@
 <template>
   <div id="app">
+    <admin-header v-show="$route.meta.adminHeader" activeIndex2="true"></admin-header>
     <div id="nav" v-if="$route.meta.nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>|
       <router-link to="/blog">Blog</router-link>|
-      <router-link to="/lang">Lang</router-link>
+      <router-link to="/lang">Lang</router-link> |
+      <router-link to="/admin/index">admin/index</router-link> |
     </div>
     <!-- <router-view /> -->
     <router-view v-if="$route.meta.keep"></router-view>
   </div>
 </template>
+
+<script>
+import Header from "@/components/admin/Header.vue";
+
+export default {
+  name: "App",
+  data () {
+    return {
+    }
+  },
+  components: {
+    "admin-header":Header
+  }
+}
+</script>
 
 <style lang="less">
 #app {

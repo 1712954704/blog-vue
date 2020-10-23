@@ -13,8 +13,8 @@ const routes = [
     // name: "Home",
     // component: Home,
     meta: {
-      nav: true,
-      keep: true
+      nav: false,
+      keep: false
     }
   },
   {
@@ -41,7 +41,8 @@ const routes = [
     ],
     meta: {
       nav: true,
-      keep: true
+      keep: false,
+      adminHeader: true
     }
   },
   {
@@ -83,6 +84,19 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Lang.vue")
+  },
+  {
+    path: "/admin/index",
+    name: "index",
+    meta: {
+      nav: true,
+      keep: true
+    },
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/admin/Index.vue")
   },
 ];
 
