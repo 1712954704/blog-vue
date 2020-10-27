@@ -1,18 +1,12 @@
 <template>
-    <div class="Adminindex">
-        <h2>Adminindex</h2>
-        <Header></Header>
-    </div>
+  <div class="Adminindex">
+    <h2>Adminindex</h2>
+  </div>
 </template>
 <script>
-import Header from "@/components/admin/Header.vue";
 
 export default {
-    name: "AdminIndex",
-    components: {
-        Header
-    },
-}
+  name: "AdminIndex",
+};
 </script>
-<style>
-</style>
+<style></style>

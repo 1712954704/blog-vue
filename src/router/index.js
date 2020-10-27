@@ -9,7 +9,7 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    redirect: '/home',
+    redirect: "/home",
     // name: "Home",
     // component: Home,
     meta: {
@@ -18,26 +18,27 @@ const routes = [
     }
   },
   {
-    path: '/home', // 主页路由
-    name: 'Home',
+    path: "/home", // 主页路由
+    name: "Home",
     component: Home,
-    children:[ // 嵌套子路由
-        {
-          path:'one', // 子页面1
-          component:One,
-          meta: {
-            nav: true,
-            keep: true
-          }
-        },
-        {
-          path:'two', // 子页面2
-          component:Two,
-          meta: {
-            nav: true,
-            keep: true
-          }
-        },
+    children: [
+      // 嵌套子路由
+      {
+        path: "one", // 子页面1
+        component: One,
+        meta: {
+          nav: true,
+          keep: true
+        }
+      },
+      {
+        path: "two", // 子页面2
+        component: Two,
+        meta: {
+          nav: true,
+          keep: true
+        }
+      }
     ],
     meta: {
       nav: true,
@@ -69,10 +70,9 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Blog.vue")
+    component: () => import(/* webpackChunkName: "about" */ "../views/Blog.vue")
   },
-    {
+  {
     path: "/Lang",
     name: "Lang",
     meta: {
@@ -82,22 +82,22 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Lang.vue")
+    component: () => import(/* webpackChunkName: "about" */ "../views/Lang.vue")
   },
   {
     path: "/admin/index",
     name: "index",
     meta: {
       nav: true,
-      keep: true
+      keep: true,
+      adminHeader: true
     },
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/admin/Index.vue")
-  },
+  }
 ];
 
 const router = new VueRouter({
