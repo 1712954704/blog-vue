@@ -43,7 +43,8 @@ const routes = [
     meta: {
       nav: true,
       keep: false,
-      adminHeader: true
+      adminHeader: true,
+      adminSideBar: true
     }
   },
   {
@@ -90,7 +91,8 @@ const routes = [
     meta: {
       nav: true,
       keep: true,
-      adminHeader: true
+      adminHeader: false,
+      adminSidebar: false
     },
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route

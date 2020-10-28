@@ -9,7 +9,7 @@
       </el-Header>
       <el-container>
         <el-aside :style="styleWidth">
-          <admin-sidebar></admin-sidebar>
+          <admin-sidebar v-show="$route.meta.adminSideBar"></admin-sidebar>
         </el-aside>
         <el-main>
           <div id="nav" v-if="$route.meta.nav">
@@ -25,7 +25,6 @@
       </el-container>
       <el-footer>footer</el-footer>
     </el-container>
-
   </div>
 </template>
 
@@ -38,19 +37,19 @@ export default {
   data() {
     return {
       styleHeader: {
-        height: 'auto'
+        height: "auto"
       },
       styleHeight: {
-        height: '100%'
+        height: "100%"
       },
       styleWidth: {
-        width: '20%'
+        width: "auto"
       }
     };
   },
   components: {
     "admin-header": Header,
-    "admin-sidebar": Sidebar,
+    "admin-sidebar": Sidebar
   }
 };
 </script>
@@ -79,7 +78,9 @@ export default {
 }
 
 // element ui 样式改变
-.el-header, .el-footer, .el-main {
-    padding: 0;
+.el-header,
+.el-footer,
+.el-main {
+  padding: 0;
 }
 </style>

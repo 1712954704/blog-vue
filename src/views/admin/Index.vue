@@ -4,9 +4,8 @@
   </div>
 </template>
 <script>
-
 export default {
-  name: "AdminIndex",
+  name: "AdminIndex"
 };
 </script>
 <style></style>
