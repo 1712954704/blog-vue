@@ -1,11 +1,11 @@
 <template>
   <div class="navList">
-    <template v-for="(item) in list">
+    <template v-for="item in list">
       <template v-if="item.children">
         <el-submenu :index="item.index" :key="item.index">
           <template slot="title">
             <i class="el-icon-location"></i>
-            <span v-show="!collapse">{{item.text}}</span>
+            <span v-show="!collapse">{{ item.text }}</span>
           </template>
           <el-menu-item-group>
             <navList :list="item.children"></navList>
@@ -19,7 +19,6 @@
         </el-menu-item>
       </template>
     </template>
-
   </div>
 </template>
 <script>
@@ -37,9 +36,9 @@ export default {
       required: true
     },
     // 折叠 true:是 false: 否
-    collapse:{
-        type: Boolean,
-        default: false
+    collapse: {
+      type: Boolean,
+      default: false
     }
   }
 };

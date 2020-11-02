@@ -23,11 +23,12 @@
           <el-menu-item index="2-4-3">选项3</el-menu-item>
         </el-submenu>
       </el-submenu>
-      <el-menu-item index="3" disabled>消息中心</el-menu-item>
+      <el-menu-item index="3" @click="getTest">消息中心</el-menu-item>
       <el-menu-item index="4"
-        ><a href="https://www.ele.me" target="_blank">{{ my }}</a></el-menu-item
+        ><a href="https://www.ele.me" target="_blank">{{my}}</a></el-menu-item
       >
     </el-menu>
+
   </div>
 </template>
 <script>
@@ -35,19 +36,36 @@ export default {
   name: "Header",
   data() {
     return {
-      activeIndex: "1"
+      activeIndex: '1',
     };
   },
-  props: {
-    my: {
-      type: String,
-      default: "子组件-我的",
-      required: true
-    }
+  props:{
+      my: {
+        type: String,
+        default: "子组件-我的",
+        required: true
+      }
   },
   methods: {
     handleSelect(key, keyPath) {
       console.log(key, keyPath);
+    },
+    getTest() {
+       //原始的get方法
+      this.$axios({
+        url: 'http://wthrcdn.etouch.cn/weather_mini?city=上海',
+        method: 'GET',
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }).then((response) => {
+        // success
+        console.log(response);
+      })
+        .catch((error) => {
+          // error
+          console.log(error)
+        })
     }
   }
 };
