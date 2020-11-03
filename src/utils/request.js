@@ -1,9 +1,16 @@
 import axios from "axios"
-import store from "@/store"
-import { getToken } from '@/utils/auth'
-import { MessageBox, Message } from 'element-ui'
+
 
 // 创建axios实例
 const service = axios.create({
-
+    // baseURL: process.env.VUE_APP_BASE_API,
+    baseURL: 'http://wthrcdn.etouch.cn',
+    timeout: 10000,
 })
+
+// // request interceptor
+// service.interceptors.request.use(
+
+// )
+
+export default service

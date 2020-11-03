@@ -23,7 +23,7 @@
           <el-menu-item index="2-4-3">选项3</el-menu-item>
         </el-submenu>
       </el-submenu>
-      <el-menu-item index="3" @click="getTest">消息中心</el-menu-item>
+      <el-menu-item index="3" @click="getTest">天气</el-menu-item>
       <el-menu-item index="4"
         ><a href="https://www.ele.me" target="_blank">{{my}}</a></el-menu-item
       >
@@ -32,6 +32,8 @@
   </div>
 </template>
 <script>
+import { getWeather } from '@/api/weather';
+
 export default {
   name: "Header",
   data() {
@@ -51,16 +53,15 @@ export default {
       console.log(key, keyPath);
     },
     getTest() {
+      let params = {
+          'city': '上海'
+      }
        //原始的get方法
-      this.$axios({
-        url: 'http://wthrcdn.etouch.cn/weather_mini?city=上海',
-        method: 'GET',
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      }).then((response) => {
+      getWeather(params).then((response) => {
         // success
         console.log(response);
+        console.log('----------');
+        console.log(process.env.NODE_ENV);
       })
         .catch((error) => {
           // error
