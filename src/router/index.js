@@ -99,6 +99,18 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/admin/Index.vue")
+  },
+  {
+    path: "/unknown",
+    name: "unknown",
+    meta: {
+      nav: false,
+      keep: true,
+      adminHeader: false,
+      adminSidebar: false
+    },
+    component: () => 
+      import("../views/Unknown.vue")
   }
 ];
 
@@ -106,8 +118,14 @@ const router = new VueRouter({
   routes
 });
 
-// router.beforeEach(async(to, from, next) => {
-//   /* 必须调用 `next` */
-// })
+router.beforeEach(async(to, from, next) => {
+  /* 404跳转 */
+  if (to.matched.length ===0) {  //如果未匹配到路由
+    from.name ? next({ name:from.name }) : next('/unknown');   //如果上级也未匹配到路由则跳转登录页面，如果上级能匹配到则转上级路由
+  } else {
+    next();    //如果匹配到正确跳转
+  }
+
+})
 
 export default router;
