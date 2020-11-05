@@ -3,6 +3,10 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import One from "../views/One.vue";
 import Two from "../views/Two.vue";
+import Admin from "../views/admin/Admin.vue";
+import Index from "../views/admin/Index.vue";
+import Login from "../views/admin/Login.vue";
+
 
 Vue.use(VueRouter);
 
@@ -12,10 +16,6 @@ const routes = [
     redirect: "/home",
     // name: "Home",
     // component: Home,
-    meta: {
-      nav: false,
-      keep: false
-    }
   },
   {
     path: "/home", // 主页路由
@@ -25,36 +25,24 @@ const routes = [
       // 嵌套子路由
       {
         path: "one", // 子页面1
+        name: "One",
         component: One,
-        meta: {
-          nav: true,
-          keep: true
-        }
+        meta: {}
       },
       {
         path: "two", // 子页面2
+        name: "Two",
         component: Two,
-        meta: {
-          nav: true,
-          keep: true
-        }
+        meta: {}
       }
     ],
-    meta: {
-      nav: true,
-      keep: false,
-      adminHeader: true,
-      adminSideBar: true
-    }
+    meta: {}
   },
   {
     path: "/about",
     name: "About",
     // component: About,
-    meta: {
-      nav: true,
-      keep: true
-    },
+    meta: {},
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -64,10 +52,7 @@ const routes = [
   {
     path: "/blog",
     name: "Blog",
-    meta: {
-      nav: true,
-      keep: true
-    },
+    meta: {},
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -76,52 +61,59 @@ const routes = [
   {
     path: "/Lang",
     name: "Lang",
-    meta: {
-      nav: true,
-      keep: true
-    },
+    meta: {},
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ "../views/Lang.vue")
   },
   {
-    path: "/admin/index",
-    name: "index",
+    path: "/admin",
+    redirect: "/admin/index",
+    component: Admin,
+    children: [
+      {
+        path: "index", 
+        name: "Index",
+        meta: {},
+        component: Index
+      }
+    ]
+  },
+  {
+    path: "/admin/login", 
+    name: "Login",
     meta: {
-      nav: true,
-      keep: true,
-      adminHeader: false,
-      adminSidebar: false
+      adminHeader: true,
+      adminSideBar: true,
+      tail: true
     },
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/admin/Index.vue")
+    component: Login
   },
   {
     path: "/unknown",
     name: "unknown",
     meta: {
-      nav: false,
+      main: true,
       keep: true,
-      adminHeader: false,
-      adminSidebar: false
+      adminHeader: true,
+      adminSidebar: true,
+      tail: true
     },
-    component: () => 
+    component: () =>
       import("../views/Unknown.vue")
   }
 ];
 
 const router = new VueRouter({
+  mode: 'history',
   routes
 });
 
-router.beforeEach(async(to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   /* 404跳转 */
-  if (to.matched.length ===0) {  //如果未匹配到路由
-    from.name ? next({ name:from.name }) : next('/unknown');   //如果上级也未匹配到路由则跳转登录页面，如果上级能匹配到则转上级路由
+  if (to.matched.length === 0) {  //如果未匹配到路由
+    from.name ? next({ name: from.name }) : next('/unknown');   //如果上级也未匹配到路由则跳转登录页面，如果上级能匹配到则转上级路由
   } else {
     next();    //如果匹配到正确跳转
   }

@@ -25,7 +25,7 @@ export default {
   },
   data() {
     return {
-      collapse: true,
+      collapse: false,
       list: [
         {
           mouduleurl: "/home",

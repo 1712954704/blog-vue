@@ -5,6 +5,7 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import i18n from "./i18n/i18n";
+import "./assets/css/global.css";
 
 import axios from 'axios';
 Vue.prototype.$axios = axios;    //全局注册，使用方法为:this.$axios

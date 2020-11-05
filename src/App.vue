@@ -3,27 +3,28 @@
     <el-container :style="styleHeight">
       <el-Header :style="styleHeader">
         <admin-header
-          v-show="$route.meta.adminHeader"
+          v-if="!$route.meta.adminHeader"
           my="父组件-我的"
         ></admin-header>
       </el-Header>
       <el-container>
         <el-aside :style="styleWidth">
-          <admin-sidebar v-show="$route.meta.adminSideBar"></admin-sidebar>
+          <admin-sidebar v-if="!$route.meta.adminSideBar"></admin-sidebar>
         </el-aside>
-        <el-main>
-          <div id="nav" v-if="$route.meta.nav">
+        <el-main v-if="!$route.meta.main">
+          <!-- <div id="nav">
             <router-link to="/">Home</router-link> |
+            <router-link to="/home/one">Home/One</router-link> |
             <router-link to="/about">About</router-link>|
             <router-link to="/blog">Blog</router-link>|
             <router-link to="/lang">Lang</router-link> |
             <router-link to="/admin/index">admin/index</router-link> |
-          </div>
-          <!-- <router-view /> -->
-          <router-view v-if="$route.meta.keep"></router-view>
+            <router-link to="/admin/login">admin/login</router-link> |
+          </div> -->
+          <router-view />
         </el-main>
       </el-container>
-      <el-footer>footer</el-footer>
+      <el-footer v-if="!$route.meta.tail">footer</el-footer>
     </el-container>
   </div>
 </template>
@@ -75,12 +76,5 @@ export default {
       color: #42b983;
     }
   }
-}
-
-// element ui 样式改变
-.el-header,
-.el-footer,
-.el-main {
-  padding: 0;
 }
 </style>

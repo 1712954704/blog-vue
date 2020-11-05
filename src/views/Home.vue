@@ -5,7 +5,8 @@
     <p>
       导航 ： <router-link to="/home">首页</router-link> |
       <router-link to="/home/one">-子页面1</router-link> |
-      <router-link to="/home/two">-子页面2</router-link>
+      <router-link to="/home/two">-子页面2</router-link> |
+      <router-link to="/">Home</router-link> |
     </p>
     <!-- 子页面展示部分 -->
     <router-view />
