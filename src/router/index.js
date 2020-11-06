@@ -7,13 +7,12 @@ import Admin from "../views/admin/Admin.vue";
 import Index from "../views/admin/Index.vue";
 import Login from "../views/admin/Login.vue";
 
-
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    redirect: "/home",
+    redirect: "/home"
     // name: "Home",
     // component: Home,
   },
@@ -73,7 +72,7 @@ const routes = [
     component: Admin,
     children: [
       {
-        path: "index", 
+        path: "index",
         name: "Index",
         meta: {},
         component: Index
@@ -81,7 +80,7 @@ const routes = [
     ]
   },
   {
-    path: "/admin/login", 
+    path: "/admin/login",
     name: "Login",
     meta: {
       adminHeader: true,
@@ -94,30 +93,25 @@ const routes = [
     path: "/unknown",
     name: "unknown",
     meta: {
-      main: true,
-      keep: true,
-      adminHeader: true,
-      adminSidebar: true,
       tail: true
     },
-    component: () =>
-      import("../views/Unknown.vue")
+    component: () => import("../views/Unknown.vue")
   }
 ];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   routes
 });
 
 router.beforeEach(async (to, from, next) => {
   /* 404跳转 */
-  if (to.matched.length === 0) {  //如果未匹配到路由
-    from.name ? next({ name: from.name }) : next('/unknown');   //如果上级也未匹配到路由则跳转登录页面，如果上级能匹配到则转上级路由
+  if (to.matched.length === 0) {
+    //如果未匹配到路由
+    from.name ? next({ name: from.name }) : next("/unknown"); //如果上级也未匹配到路由则跳转登录页面，如果上级能匹配到则转上级路由
   } else {
-    next();    //如果匹配到正确跳转
+    next(); //如果匹配到正确跳转
   }
-
-})
+});
 
 export default router;

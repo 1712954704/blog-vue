@@ -1,28 +1,30 @@
 <template>
   <div id="app" :style="styleHeight">
     <el-container :style="styleHeight">
-      <el-Header :style="styleHeader">
-        <admin-header
-          v-if="!$route.meta.adminHeader"
-          my="父组件-我的"
-        ></admin-header>
-      </el-Header>
       <el-container>
         <el-aside :style="styleWidth">
           <admin-sidebar v-if="!$route.meta.adminSideBar"></admin-sidebar>
         </el-aside>
-        <el-main v-if="!$route.meta.main">
-          <!-- <div id="nav">
-            <router-link to="/">Home</router-link> |
-            <router-link to="/home/one">Home/One</router-link> |
-            <router-link to="/about">About</router-link>|
-            <router-link to="/blog">Blog</router-link>|
-            <router-link to="/lang">Lang</router-link> |
-            <router-link to="/admin/index">admin/index</router-link> |
-            <router-link to="/admin/login">admin/login</router-link> |
-          </div> -->
-          <router-view />
-        </el-main>
+        <el-container class="flex_column">
+          <el-Header :style="styleHeader">
+            <admin-header
+              v-if="!$route.meta.adminHeader"
+              my="父组件-我的"
+            ></admin-header>
+          </el-Header>
+          <el-main v-if="!$route.meta.main">
+            <!-- <div id="nav">
+              <router-link to="/">Home</router-link> |
+              <router-link to="/home/one">Home/One</router-link> |
+              <router-link to="/about">About</router-link>|
+              <router-link to="/blog">Blog</router-link>|
+              <router-link to="/lang">Lang</router-link> |
+              <router-link to="/admin/index">admin/index</router-link> |
+              <router-link to="/admin/login">admin/login</router-link> |
+            </div> -->
+            <router-view />
+          </el-main>
+        </el-container>
       </el-container>
       <el-footer v-if="!$route.meta.tail">footer</el-footer>
     </el-container>
@@ -55,7 +57,7 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -76,5 +78,9 @@ export default {
       color: #42b983;
     }
   }
+}
+
+.flex_column {
+  flex-direction: column;
 }
 </style>
