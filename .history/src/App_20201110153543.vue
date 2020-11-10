@@ -53,6 +53,7 @@ export default {
   },
   methods: {
     folding(value){
+      console.log(value)
       this.collapse = value;
     }
   },

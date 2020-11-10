@@ -25,6 +25,7 @@ export default {
   },
   data() {
     return {
+      collapse: false,
       list: [
         {
           mouduleurl: "/home",
@@ -128,7 +129,7 @@ export default {
   props:{
     collapse: {
       type: Boolean,
-      default: false
+      default: false,
     }
   },
   methods: {

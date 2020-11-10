@@ -3,13 +3,13 @@
     <el-container :style="styleHeight">
       <el-container>
         <el-aside :style="styleWidth">
-          <admin-sidebar v-if="!$route.meta.adminSideBar" :collapse="collapse"></admin-sidebar>
+          <admin-sidebar v-if="!$route.meta.adminSideBar"></admin-sidebar>
         </el-aside>
         <el-container class="flex_column">
           <el-Header :style="styleHeader">
             <admin-header
               v-if="!$route.meta.adminHeader"
-              @childFn="folding"
+              my="父组件-我的"
             ></admin-header>
           </el-Header>
           <el-main v-if="!$route.meta.main">
@@ -47,14 +47,8 @@ export default {
       },
       styleWidth: {
         width: "auto"
-      },
-      collapse: false,
+      }
     };
-  },
-  methods: {
-    folding(value){
-      this.collapse = value;
-    }
   },
   components: {
     "admin-header": Header,

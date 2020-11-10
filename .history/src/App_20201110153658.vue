@@ -53,6 +53,8 @@ export default {
   },
   methods: {
     folding(value){
+      console.log('传值')
+      console.log(value)
       this.collapse = value;
     }
   },

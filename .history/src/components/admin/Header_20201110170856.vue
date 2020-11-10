@@ -1,7 +1,8 @@
 <template>
   <div class="header">
-      <i class="control nav_left" :class="{'el-icon-s-fold':fold,'el-icon-s-unfold':unfold}" @click="control"></i>
-      <el-breadcrumb class="nav_breadcrumb nav_left" separator="/">
+    <el-container class="header">
+      <i class="control" :class="{'el-icon-s-fold':fold,'el-icon-s-unfold':unfold}" @click="control"></i>
+      <el-breadcrumb separator="/">
         <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
         <el-breadcrumb-item><a href="/">活动管理</a></el-breadcrumb-item>
         <el-breadcrumb-item>活动列表</el-breadcrumb-item>
@@ -10,6 +11,7 @@
       <div class="right_menu">
         <img src="https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80" alt="" class="avatar">
       </div>
+    </el-container>
   </div>
 </template>
 <script>
@@ -77,12 +79,6 @@ export default {
     transition: background .3s;
     -webkit-tap-highlight-color: transparent;
 }
-.nav_breadcrumb {
-  display: inline-block;
-  font-size: 14px;
-  line-height: 50px;
-  margin-left: 8px;
-}
 .right_menu {
   float: right;
   height: 100%;
@@ -93,11 +89,5 @@ export default {
   width: 40px;
   height: 40px;
   border-radius: 10px;
-}
-.nav_left {
-  float: left;
-}
-.nav_right {
-  float: right;
 }
 </style>

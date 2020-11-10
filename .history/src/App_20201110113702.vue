@@ -3,7 +3,7 @@
     <el-container :style="styleHeight">
       <el-container>
         <el-aside :style="styleWidth">
-          <admin-sidebar v-if="!$route.meta.adminSideBar" :collapse="collapse"></admin-sidebar>
+          <admin-sidebar v-if="!$route.meta.adminSideBar"></admin-sidebar>
         </el-aside>
         <el-container class="flex_column">
           <el-Header :style="styleHeader">
