@@ -4,7 +4,7 @@
       <el-breadcrumb class="nav_breadcrumb nav_left" separator="/">
         <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
         <el-breadcrumb-item><a href="/">活动管理</a></el-breadcrumb-item>
-        <el-breadcrumb-item>活动列表</el-breadcrumb-item>
+        <el-breadcrumb-item><span @click="infor">接口测试</span></el-breadcrumb-item>
         <el-breadcrumb-item>活动详情</el-breadcrumb-item>
       </el-breadcrumb>
       <div class="right_menu">
@@ -14,6 +14,7 @@
 </template>
 <script>
 import { getWeather } from '@/api/weather';
+import { getInfor } from '@/api/test/user';
 
 export default {
   name: "Header",
@@ -40,6 +41,27 @@ export default {
         this.$emit('childFn',true)
       }
     },
+    // hcrm接口测试
+    infor() {
+      // console.log('infor')
+      let key = '2EeFLh76UZgjy6MLh76Oa0JJD84EdAPL'
+      let timestamp = Date.parse(new Date())
+      let sign = this.$md5(timestamp + key)
+      let params = {
+        'timestamp': timestamp,
+        'sign': sign,
+        // 'number': '90896784'
+      }
+      getInfor(params).then((response) => {
+        // success
+        console.log(response);
+        console.log('----------');
+        console.log(process.env.NODE_ENV);
+      }).catch((error) => {
+          // error
+          console.log(error)
+        })
+    },
     // 测试天气接口
     getTest() {
       let params = {
@@ -50,8 +72,7 @@ export default {
         console.log(response);
         console.log('----------');
         console.log(process.env.NODE_ENV);
-      })
-        .catch((error) => {
+      }).catch((error) => {
           // error
           console.log(error)
         })

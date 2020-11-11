@@ -1,7 +1,8 @@
 <template>
   <div class="sidebar">
     <el-menu
-      default-active="1-2-1"
+      :default-active="itemlist[0].mouduleurl"
+      router
       class="el-menu-demo"
       mode="vertical"
       @open="handleOpen"
@@ -58,13 +59,13 @@ export default {
           mouduleurl: "/home",
           text: "后台管理",
           value: "0001",
-          index: "1",
+          index: "/home",
           children: [
             {
-              mouduleurl: "pages/config/config_list.html",
-              text: "系统参数",
+              mouduleurl: "/tables",
+              text: "表格",
               value: "00010001",
-              index: "1-1"
+              index: "/tables"
             },
             {
               mouduleurl: "pages/dmp/table_list.html",

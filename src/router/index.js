@@ -6,6 +6,7 @@ import Two from "../views/Two.vue";
 import Admin from "../views/admin/Admin.vue";
 import Index from "../views/admin/Index.vue";
 import Login from "../views/admin/Login.vue";
+import Tables from "../views/admin/Tables.vue";
 
 Vue.use(VueRouter);
 
@@ -88,6 +89,12 @@ const routes = [
       tail: true
     },
     component: Login
+  },
+  {
+    path: "/tables",
+    name: "tables",
+    meta: {},
+    component: Tables
   },
   {
     path: "/unknown",
