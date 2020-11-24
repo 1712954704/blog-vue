@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-  name: "unknown",
+  name: "404",
   data() {
     return {};
   }

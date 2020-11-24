@@ -110,7 +110,7 @@ const routes = [
         meta: {
           tail: true,
           adminSideBar: true,
-          adminHeader: true,
+          adminHeader: true
         },
         component: () => import("../views/error-page/404.vue")
       }
