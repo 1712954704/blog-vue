@@ -1,11 +1,11 @@
 <template>
   <div>
-    <h2>table</h2>
+    <router-view />
   </div>
 </template>
 <script>
 export default {
-  name: "tables",
+  name: "error",
   data() {
     return {};
   }

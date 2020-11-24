@@ -1,15 +1,13 @@
 <template>
-    <div class="admin">
-        <router-view />
-    </div>
+  <div class="admin">
+    <router-view />
+  </div>
 </template>
 <script>
 export default {
-    name: "Admin",
-    data() {
-        return {
-
-        }
-    }
-}
+  name: "Admin",
+  data() {
+    return {};
+  }
+};
 </script>

@@ -126,7 +126,7 @@ export default {
       ]
     };
   },
-  props:{
+  props: {
     collapse: {
       type: Boolean,
       default: false

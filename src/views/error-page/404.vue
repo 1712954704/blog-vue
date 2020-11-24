@@ -1,13 +1,14 @@
 <template>
   <div>
-    <h2>table</h2>
+    <h2>404</h2>
   </div>
 </template>
 <script>
 export default {
-  name: "tables",
+  name: "unknown",
   data() {
     return {};
   }
 };
 </script>
+<style></style>

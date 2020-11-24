@@ -6,12 +6,12 @@ import router from "./router";
 import store from "./store";
 import i18n from "./i18n/i18n";
 import "./assets/css/global.css";
-import md5 from 'js-md5';
+import md5 from "js-md5";
 
 Vue.prototype.$md5 = md5;
 
-import axios from 'axios';
-Vue.prototype.$axios = axios;    //全局注册，使用方法为:this.$axios
+import axios from "axios";
+Vue.prototype.$axios = axios; //全局注册，使用方法为:this.$axios
 Vue.config.productionTip = false;
 
 Vue.use(ElementUI, { size: "small", zIndex: 3000 });
