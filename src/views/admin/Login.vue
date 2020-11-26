@@ -30,6 +30,8 @@
   </div>
 </template>
 <script>
+import {login} from "@/api/admin/login";
+
 export default {
   name: "AdminLogin",
   data() {
@@ -54,6 +56,21 @@ export default {
   methods: {
     onSubmit() {
       console.log("submit!");
+      let params = {
+        name: this.form.name,
+        password: this.form.pwd
+      };
+      login(params)
+        .then(response => {
+          // success
+          console.log(response);
+          console.log("----------");
+          console.log(process.env.NODE_ENV);
+        })
+        .catch(error => {
+          // error
+          console.log(error);
+        });
     }
   }
 };

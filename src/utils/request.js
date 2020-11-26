@@ -4,7 +4,7 @@ import axios from "axios";
 const service = axios.create({
   // baseURL: process.env.VUE_APP_BASE_API,
   // baseURL: 'http://wthrcdn.etouch.cn',
-  baseURL: "http://prhr.purui.cn",
+  baseURL: "http://www.blog.test",
   timeout: 10000
 });
 

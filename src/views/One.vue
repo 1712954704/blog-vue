@@ -10,6 +10,9 @@ export default {
     return {
       msg: "Hi, I am One Page!"
     };
+  },
+  created(){
+    // localStorage.setItem('code','One');
   }
 };
 </script>

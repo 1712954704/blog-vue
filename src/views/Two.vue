@@ -10,6 +10,9 @@ export default {
     return {
       msg: "Hi, I am Two Page!"
     };
+  },
+  created(){
+    // localStorage.setItem('code','Two');
   }
 };
 </script>
