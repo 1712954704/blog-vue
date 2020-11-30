@@ -79,6 +79,12 @@ const routes = [
         name: "Index",
         meta: {},
         component: Index
+      },
+      {
+        path: "test", // 子页面
+        name: "Test",
+        meta: {},
+        component: () => import("../views/admin/Test.vue")
       }
     ]
   },
@@ -89,7 +95,7 @@ const routes = [
       adminHeader: true,
       adminSideBar: true,
       tail: true,
-      needLogin: true,
+      needLogin: true
     },
     component: Login
   },
@@ -111,7 +117,7 @@ const routes = [
         meta: {
           tail: true,
           adminSideBar: true,
-          adminHeader: true,
+          adminHeader: true
         },
         component: () => import("../views/error-page/404.vue")
       }
@@ -127,24 +133,28 @@ const router = new VueRouter({
 });
 
 // localStorage.setItem('code', 'set');
-// let code = localStorage.getItem('code');
+// let user = localStorage.getItem('user');
 
 router.beforeEach(async (to, from, next) => {
 
   // 判断当前路由是否需要登录
   if(!to.meta.needLogin){
-    next('/admin/login');
+    if(localStorage.getItem('user')){
+      next();
+    }else{
+      next('/admin/login');      
+    }
   }else{
     next();
   }
 
-  /* 404跳转 与path*重复可注释 */
-  // if (to.matched.length === 0) {
-  //   //如果未匹配到路由
-  //   from.name ? next({ name: from.name }) : next("/error/404"); //如果上级也未匹配到路由则跳转登录页面，如果上级能匹配到则转上级路由
-  // } else {
-  //   next(); //如果匹配到正确跳转
-  // }
+//   /* 404跳转 与path*重复可注释 */
+//   // if (to.matched.length === 0) {
+//   //   //如果未匹配到路由
+//   //   from.name ? next({ name: from.name }) : next("/error/404"); //如果上级也未匹配到路由则跳转登录页面，如果上级能匹配到则转上级路由
+//   // } else {
+//   //   next(); //如果匹配到正确跳转
+//   // }
 });
 
 export default router;

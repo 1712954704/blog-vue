@@ -11,7 +11,7 @@ export default {
       msg: "Hi, I am Two Page!"
     };
   },
-  created(){
+  created() {
     // localStorage.setItem('code','Two');
   }
 };

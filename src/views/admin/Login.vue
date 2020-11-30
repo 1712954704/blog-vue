@@ -30,8 +30,8 @@
   </div>
 </template>
 <script>
-import {login} from "@/api/admin/login";
-
+import { login } from "@/api/admin/login";
+import ElementUI from 'element-ui';
 export default {
   name: "AdminLogin",
   data() {
@@ -55,17 +55,30 @@ export default {
   },
   methods: {
     onSubmit() {
-      console.log("submit!");
-      let params = {
+      let data = {
         name: this.form.name,
         password: this.form.pwd
       };
-      login(params)
+      login(data)
         .then(response => {
           // success
-          console.log(response);
-          console.log("----------");
-          console.log(process.env.NODE_ENV);
+          let data = response.data
+          if(data.code == 200){
+              //Message 消息提示
+              ElementUI.Message({
+                  message: data.msg,
+                  type: 'success'
+              });
+              localStorage.setItem('user', data.data);
+              this.$router.push('/home')
+          }else{
+              //Notification 通知
+              ElementUI.Notification({
+                  title: '警告',
+                  message: data.msg,
+                  type: 'warning'
+              });
+          }
         })
         .catch(error => {
           // error

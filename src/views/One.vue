@@ -11,7 +11,7 @@ export default {
       msg: "Hi, I am One Page!"
     };
   },
-  created(){
+  created() {
     // localStorage.setItem('code','One');
   }
 };
